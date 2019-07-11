@@ -1,0 +1,43 @@
+<aside class="left-sidebar">
+  <!-- Sidebar scroll-->
+  <div class="scroll-sidebar">
+    <!-- Sidebar navigation-->
+    <nav class="sidebar-nav">
+      <ul id="sidebarnav">
+        <li class="user-profile">
+          <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+            <img  *ngIf="!user.IMAGE" src="assets/images/users/default-profile.png" alt="user"/>
+            <img  *ngIf="user.IMAGE"[src]="img" alt="user"/>
+            <span class="hide-menu">{{user.NAME}} </span>
+          </a>
+          <ul aria-expanded="false" class="collapse">
+            <li>
+              <a routerLinkActive="active" routerLink="/dashboard">My Profile </a>
+            </li>
+            <li>
+              <a routerLinkActive="active" routerLink="/login" (click)="_user.logout()">Logout</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-devider"></li>
+        <li class="nav-small-cap">PERSONAL</li>
+        <li *ngFor="let menu of _sidebar.menu">
+          <a class="has-arrow waves-effect waves-dark" aria-expanded="false">
+            <i [class]="menu.icon"></i>
+            <span class="hide-menu">{{menu.title}}
+              <span class="label label-rouded label-themecolor pull-right">{{menu.submenu.length + 1}}</span>
+            </span>
+          </a>
+          <ul aria-expanded="false" class="collapse">
+            <li *ngFor="let submenu of menu.submenu">
+              <a routerLinkActive="active" [routerLink]="[submenu.url]">{{submenu.title}} </a>
+            </li>
+            <li><a routerLinkActive="active" href="https://rhcms.phonemas.com/">CMS</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <!-- End Sidebar navigation -->
+  </div>
+  <!-- End Sidebar scroll-->
+</aside>
